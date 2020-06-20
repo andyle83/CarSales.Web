@@ -1,12 +1,14 @@
+using CarSales.Web.Infra.Data.Context;
+using CarSales.Web.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Serilog;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
-namespace CarSales.Web
+namespace CarSales.Web.Api
 {
     public class Startup
     {
@@ -21,6 +23,10 @@ namespace CarSales.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<VehicleDbContext>();
+
+            RegisterServices(services);
 
             // Register Serilog
             var logger = new LoggerConfiguration()
@@ -76,6 +82,11 @@ namespace CarSales.Web
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private static void RegisterServices(IServiceCollection services)
+        {
+            DependencyContainer.RegisterServices(services);
         }
     }
 }

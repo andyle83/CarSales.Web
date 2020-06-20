@@ -1,4 +1,4 @@
-namespace CarSales.Web
+namespace CarSales.Web.Models
 {
     public class Vehicle
     {
