@@ -1,8 +1,13 @@
+using CarSales.Web.Domain.Models;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Threading;
+
 namespace CarSales.Web.Models
 {
     public class Vehicle
     {
-        public int VehicleId { get; set; }
+        public int Id { get; set; }
 
         public int Doors { get; set; }
 
@@ -11,5 +16,15 @@ namespace CarSales.Web.Models
         public string Make { get; set; }
 
         public string Model { get; set; }
+
+        public string Description { get; set; }
+
+        public int TypeId { get; set; }
+
+        public VehicleType Type { get; set; }
+
+        public Registration Registration { get; set; }
+
+        public List<VehicleAttribute> Attributes { get; set; }
     }
 }
