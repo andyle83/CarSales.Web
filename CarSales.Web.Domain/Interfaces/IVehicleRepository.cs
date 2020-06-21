@@ -1,10 +1,10 @@
 ﻿using CarSales.Web.Models;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CarSales.Web.Domain.Interfaces
 {
     public interface IVehicleRepository
     {
-        public Vehicle GetVehicle(int vehicleId);
+        public Task<Vehicle> GetVehicleAsync(int vehicleId);
     }
 }

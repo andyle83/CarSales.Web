@@ -3,7 +3,7 @@ using CarSales.Web.Application.ViewModels;
 using CarSales.Web.Appplication.Interfaces;
 using CarSales.Web.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CarSales.Web.Application.Services
 {
@@ -22,11 +22,11 @@ namespace CarSales.Web.Application.Services
             _mapper = mapper;
         }
 
-        public VehicleDto GetVehicle(int vehicleId)
+        public async Task<VehicleDto> GetVehicle(int vehicleId)
         {
             _logger.LogInformation($"Calling {nameof(GetVehicle)} of {nameof(VehicleService)} with id {vehicleId}");
 
-            var vehicle = _vehicleRepository.GetVehicle(vehicleId);
+            var vehicle = await _vehicleRepository.GetVehicleAsync(vehicleId);
             var result = _mapper.Map<VehicleDto>(vehicle);
 
             return result;

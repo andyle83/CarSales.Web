@@ -5,42 +5,47 @@ using CarSales.Web.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CarSales.Web.Infra.Data.Repositories
 {
-    public class VehicleTypeRepository : IVehicleTypeRepository
+    public class VehicleTypeRepository : BaseRepository, IVehicleTypeRepository
     {
-        private VehicleDbContext _dbContext;
-
-        public VehicleTypeRepository(VehicleDbContext dbContext)
+        public VehicleTypeRepository(VehicleDbContext context) : base(context)
         {
-            _dbContext = dbContext;
         }
 
-        public IEnumerable<VehicleType> GetVehicleTypes()
+        public async Task<IEnumerable<VehicleType>> GetVehicleTypesAsync()
         {
-            var result = _dbContext.VehicleTypes.Include(v => v.Vehicles);
+            var result = await _context.VehicleTypes
+                            .Include(v => v.Vehicles)
+                            .AsNoTracking()
+                            .ToListAsync();
 
             return result;
         }
 
-        public VehicleType GetVehicleType(int vehicleTypeId)
+        public async Task<VehicleType> GetVehicleTypeAsync(int vehicleTypeId)
         {
-            var result = _dbContext.VehicleTypes.Where(t => t.Id == vehicleTypeId).FirstOrDefault();
+            var result = await _context.VehicleTypes
+                            .Where(t => t.Id == vehicleTypeId)
+                            .FirstOrDefaultAsync();
 
             return result;
         }
 
         public IEnumerable<Vehicle> GetVehicles(int vehicleTypeId)
         {
-            var type = _dbContext.VehicleTypes.Where(t => t.Id == vehicleTypeId).FirstOrDefault();
+            var type = _context.VehicleTypes
+                        .Where(t => t.Id == vehicleTypeId)
+                        .FirstOrDefault();
 
             if (type == null) return null;
 
-            var vehicles = _dbContext.Entry(type)
-                .Collection(t => t.Vehicles)
-                .Query()
-                .ToList();
+            var vehicles = _context.Entry(type)
+                            .Collection(t => t.Vehicles)
+                            .Query()
+                            .ToList();
 
             return vehicles;
         }

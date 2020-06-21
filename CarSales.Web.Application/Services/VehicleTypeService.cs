@@ -2,9 +2,9 @@
 using CarSales.Web.Application.Interfaces;
 using CarSales.Web.Application.ViewModels;
 using CarSales.Web.Domain.Interfaces;
-using CarSales.Web.Domain.Models;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CarSales.Web.Application.Services
 {
@@ -23,21 +23,21 @@ namespace CarSales.Web.Application.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<VehicleTypeDto> GetVehicleTypes()
+        public async Task<IEnumerable<VehicleTypeDto>> GetVehicleTypesAsync()
         {
-            _logger.LogInformation($"Calling {nameof(GetVehicleTypes)} of {nameof(VehicleTypeService)}");
+            _logger.LogInformation($"Calling {nameof(GetVehicleTypesAsync)} of {nameof(VehicleTypeService)}");
 
-            var vehicleTypes = _vehicleTypeRepository.GetVehicleTypes();
+            var vehicleTypes = await _vehicleTypeRepository.GetVehicleTypesAsync();
             var result = _mapper.Map<IEnumerable<VehicleTypeDto>>(vehicleTypes);
 
             return result;
         }
 
-        public VehicleTypeDto GetVehicleType(int vehicleTypeId)
+        public async Task<VehicleTypeDto> GetVehicleTypeAsync(int vehicleTypeId)
         {
-            _logger.LogInformation($"Calling {nameof(GetVehicleType)} of {nameof(VehicleTypeService)} with id {vehicleTypeId}");
+            _logger.LogInformation($"Calling {nameof(GetVehicleTypeAsync)} of {nameof(VehicleTypeService)} with id {vehicleTypeId}");
 
-            var vehicleType = _vehicleTypeRepository.GetVehicleType(vehicleTypeId);
+            var vehicleType = await _vehicleTypeRepository.GetVehicleTypeAsync(vehicleTypeId);
             var result = _mapper.Map<VehicleTypeDto>(vehicleType);
 
             return result;

@@ -1,10 +1,10 @@
 ﻿using CarSales.Web.Application.ViewModels;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CarSales.Web.Appplication.Interfaces
 {
     public interface IVehicleService
     {
-        public VehicleDto GetVehicle(int vehicleId);
+        public Task<VehicleDto> GetVehicle(int vehicleId);
     }
 }

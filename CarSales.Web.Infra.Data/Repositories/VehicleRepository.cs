@@ -2,26 +2,23 @@
 using CarSales.Web.Infra.Data.Context;
 using CarSales.Web.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CarSales.Web.Infra.Data.Repositories
 {
-    public class VehicleRepository : IVehicleRepository
+    public class VehicleRepository : BaseRepository, IVehicleRepository
     {
-        private VehicleDbContext _dbContext;
-
-        public VehicleRepository(VehicleDbContext dbContext)
+        public VehicleRepository(VehicleDbContext context) : base(context)
         {
-            _dbContext = dbContext;
         }
 
-        public Vehicle GetVehicle(int vehicleId)
+        public async Task<Vehicle> GetVehicleAsync(int vehicleId)
         {
-            var vehicle = _dbContext.Vehicles
+            var vehicle = await _context.Vehicles
                             .Where(vehicle => vehicle.Id == vehicleId)
                             .Include(t => t.Type)
-                            .FirstOrDefault();
+                            .FirstOrDefaultAsync();
 
             return vehicle;
         }

@@ -3,8 +3,7 @@ using CarSales.Web.Appplication.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace CarSales.Web.Api.Controllers
 {
@@ -30,18 +29,18 @@ namespace CarSales.Web.Api.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<VehicleDto> GetVehicle(int id)
+        public async Task<IActionResult> GetVehicleAsync(int id)
         {
-            _logger.LogInformation($"Calling {nameof(GetVehicle)} of {nameof(VehicleController)} with id {id}");
+            _logger.LogInformation($"Calling {nameof(GetVehicleAsync)} of {nameof(VehicleController)} with id {id}");
 
-            var vehicle = _vehicleService.GetVehicle(id);
+            var vehicle = await _vehicleService.GetVehicle(id);
 
             if (vehicle == null)
             {
                 return NotFound();
             }
 
-            return vehicle;
+            return Ok(vehicle);
         }
     }
 }
