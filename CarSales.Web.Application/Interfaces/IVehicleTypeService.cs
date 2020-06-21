@@ -1,4 +1,5 @@
-﻿using CarSales.Web.Application.ViewModels;
+﻿using CarSales.Web.Application.Communication;
+using CarSales.Web.Application.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace CarSales.Web.Application.Interfaces
     {
         public Task<IEnumerable<VehicleTypeDto>> GetVehicleTypesAsync();
 
-        public Task<VehicleTypeDto> AddVehicleTypeAsync(SaveVehicleTypeDto vehicleTypeDto);
+        public Task<VehicleTypeResponse> AddVehicleTypeAsync(SaveVehicleTypeDto vehicleTypeDto);
 
         public Task<VehicleTypeDto> GetVehicleTypeAsync(int vehicleTypeId);
 

@@ -71,18 +71,16 @@ namespace CarSales.Web.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> AddVehicleTypeAsync([FromBody] SaveVehicleTypeDto vehicleTypeDto)
         {
-            _logger.LogInformation($"Calling {nameof(AddVehicleTypeAsync)} of {nameof(VehicleTypeController)} with code {vehicleTypeDto.Code} and name {vehicleTypeDto.Name}");
+            _logger.LogInformation($"Calling {nameof(AddVehicleTypeAsync)} of {nameof(VehicleTypeController)} with code {vehicleTypeDto.Code}");
 
-            // TODO: Check model is valid
-            // TODO: Check if code is duplicate
-            var vehicleType = await _vehicleTypeService.AddVehicleTypeAsync(vehicleTypeDto);
+            var result = await _vehicleTypeService.AddVehicleTypeAsync(vehicleTypeDto);
 
-            if (vehicleType == null)
+            if (!result.Success)
             {
-                return BadRequest();
+                return BadRequest(result.Message);
             }
 
-            return Ok(vehicleType);
+            return Ok(result.Resource);
         }
 
         /// <summary>

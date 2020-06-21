@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CarSales.Web.Application.Communication;
 using CarSales.Web.Application.Interfaces;
 using CarSales.Web.Application.ViewModels;
 using CarSales.Web.Domain.Interfaces;
@@ -69,27 +70,27 @@ namespace CarSales.Web.Application.Services
             return result;
         }
 
-        public async Task<VehicleTypeDto> AddVehicleTypeAsync(SaveVehicleTypeDto saveVehicleTypeDto)
+        public async Task<VehicleTypeResponse> AddVehicleTypeAsync(SaveVehicleTypeDto saveVehicleTypeDto)
         {
+            _logger.LogInformation($"Calling {nameof(AddVehicleTypeAsync)} of {nameof(VehicleTypeService)} with code {saveVehicleTypeDto.Code}");
+
             try
             {
-                var vehicle = _mapper.Map<SaveVehicleTypeDto, VehicleType>(saveVehicleTypeDto);
+                var vehicleType = _mapper.Map<SaveVehicleTypeDto, VehicleType>(saveVehicleTypeDto);
 
-                var vehicleId = await _vehicleTypeRepository.AddVehicleTypeAsync(vehicle);
+                // TODO: Need to throw an error if code is existed
+                await _vehicleTypeRepository.AddVehicleTypeAsync(vehicleType);
 
-                return new VehicleTypeDto()
-                {
-                    Id = vehicleId,
-                    Code = vehicle.Code,
-                    Name = vehicle.Name,
-                };
+                var result = _mapper.Map<VehicleType, VehicleTypeDto>(vehicleType);
+
+                return new VehicleTypeResponse(result);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"An error occurred when saving a new vehicle type: {ex.Message}");
-            }
+                _logger.LogError($"An error occurred when saving a new vehicle type with code {saveVehicleTypeDto.Code}");
 
-            return null;
+                return new VehicleTypeResponse($"An error occurred when saving the category: {ex.Message}");
+            }
         }
     }
 }
