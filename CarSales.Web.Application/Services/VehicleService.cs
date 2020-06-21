@@ -3,6 +3,7 @@ using CarSales.Web.Application.ViewModels;
 using CarSales.Web.Appplication.Interfaces;
 using CarSales.Web.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace CarSales.Web.Application.Services
 {
@@ -26,8 +27,9 @@ namespace CarSales.Web.Application.Services
             _logger.LogInformation($"Calling {nameof(GetVehicle)} of {nameof(VehicleService)} with id {vehicleId}");
 
             var vehicle = _vehicleRepository.GetVehicle(vehicleId);
+            var result = _mapper.Map<VehicleDto>(vehicle);
 
-            return _mapper.Map<VehicleDto>(vehicle);
+            return result;
         }
     }
 }

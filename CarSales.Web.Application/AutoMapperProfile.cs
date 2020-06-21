@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CarSales.Web.Application.ViewModels;
+using CarSales.Web.Domain.Models;
 using CarSales.Web.Models;
 
 namespace CarSales.Web.Application
@@ -10,6 +11,8 @@ namespace CarSales.Web.Application
         {
             CreateMap<Vehicle, VehicleDto>()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type.Name));
+
+            CreateMap<VehicleType, VehicleTypeDto>();
         }
     }
 }

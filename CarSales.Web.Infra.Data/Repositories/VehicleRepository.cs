@@ -2,6 +2,7 @@
 using CarSales.Web.Infra.Data.Context;
 using CarSales.Web.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CarSales.Web.Infra.Data.Repositories
@@ -17,10 +18,12 @@ namespace CarSales.Web.Infra.Data.Repositories
 
         public Vehicle GetVehicle(int vehicleId)
         {
-            return _dbContext.Vehicles
-                .Where(vehicle => vehicle.Id == vehicleId)
-                .Include(t => t.Type)
-                .FirstOrDefault();
+            var vehicle = _dbContext.Vehicles
+                            .Where(vehicle => vehicle.Id == vehicleId)
+                            .Include(t => t.Type)
+                            .FirstOrDefault();
+
+            return vehicle;
         }
     }
 }

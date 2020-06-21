@@ -24,15 +24,57 @@ namespace CarSales.Web.Api.Controllers
         }
 
         /// <summary>
-        /// Get list of vehicles in a specific type
+        /// Get list of vehicle types
         /// </summary>
-        /// <param name="id">vehicle Type Id</param>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<VehicleTypeDto>> GetVehicleTypes()
+        {
+            _logger.LogInformation($"Calling {nameof(GetVehicleTypes)} of {nameof(VehicleTypeController)}");
+
+            var vehicleTypes = _vehicleTypeService.GetVehicleTypes();
+
+            if (vehicleTypes == null)
+            {
+                return NotFound();
+            }
+
+            return vehicleTypes.ToList();
+        }
+
+        /// <summary>
+        /// Get details of a vehicle type
+        /// </summary>
+        /// <param name="id">Vehicle Type Id</param>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<VehicleDto>> Get(int id)
+        public ActionResult<VehicleTypeDto> GetVehicleType(int id)
         {
-            _logger.LogInformation($"Calling {nameof(Get)} of {nameof(VehicleTypeController)} with id {id}");
+            _logger.LogInformation($"Calling {nameof(GetVehicleTypes)} of {nameof(VehicleTypeController)} with id {id}");
+
+            var vehicleType = _vehicleTypeService.GetVehicleType(id);
+
+            if (vehicleType == null)
+            {
+                return NotFound();
+            }
+
+            return vehicleType;
+        }
+
+        /// <summary>
+        /// Get list of vehicles in a specific type
+        /// </summary>
+        /// <param name="id">Vehicle Type Id</param>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Route("{id}/Vehicle/")]
+        public ActionResult<IEnumerable<VehicleDto>> GetVehiclesByType(int id)
+        {
+            _logger.LogInformation($"Calling {nameof(GetVehiclesByType)} of {nameof(VehicleTypeController)} with id {id}");
 
             var vehicles = _vehicleTypeService.GetVehicles(id);
 

@@ -1,4 +1,5 @@
 ﻿using CarSales.Web.Models;
+using System.Collections.Generic;
 
 namespace CarSales.Web.Domain.Interfaces
 {

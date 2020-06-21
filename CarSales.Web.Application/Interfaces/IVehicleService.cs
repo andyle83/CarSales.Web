@@ -1,4 +1,5 @@
 ﻿using CarSales.Web.Application.ViewModels;
+using System.Collections.Generic;
 
 namespace CarSales.Web.Appplication.Interfaces
 {

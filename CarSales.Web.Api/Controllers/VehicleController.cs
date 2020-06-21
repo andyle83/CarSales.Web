@@ -3,6 +3,8 @@ using CarSales.Web.Appplication.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarSales.Web.Api.Controllers
 {
@@ -28,9 +30,9 @@ namespace CarSales.Web.Api.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<VehicleDto> Get(int id)
+        public ActionResult<VehicleDto> GetVehicle(int id)
         {
-            _logger.LogInformation($"Calling {nameof(Get)} of {nameof(VehicleController)} with id {id}");
+            _logger.LogInformation($"Calling {nameof(GetVehicle)} of {nameof(VehicleController)} with id {id}");
 
             var vehicle = _vehicleService.GetVehicle(id);
 
