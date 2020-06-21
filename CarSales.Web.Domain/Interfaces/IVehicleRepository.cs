@@ -5,6 +5,6 @@ namespace CarSales.Web.Domain.Interfaces
 {
     public interface IVehicleRepository
     {
-        IEnumerable<Vehicle> GetVehicles();
+        public Vehicle GetVehicle(int vehicleId);
     }
 }

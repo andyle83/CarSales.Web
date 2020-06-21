@@ -2,6 +2,7 @@
 using CarSales.Web.Appplication.Interfaces;
 using CarSales.Web.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace CarSales.Web.Application.Services
 {
@@ -17,13 +18,21 @@ namespace CarSales.Web.Application.Services
             _vehicleRepository = vehicleRepository;
         }
 
-        public VehicleViewModel GetVehicles()
+        public VehicleDto GetVehicle(int vehicleId)
         {
-            _logger.LogInformation($"Calling {nameof(GetVehicles)} of {nameof(VehicleService)}");
+            _logger.LogInformation($"Calling {nameof(GetVehicle)} of {nameof(VehicleService)} with id {vehicleId}");
 
-            return new VehicleViewModel()
+            var vehicle = _vehicleRepository.GetVehicle(vehicleId);
+
+            // TODO: Should handle this convert in a mapper
+            if (vehicle == null) return null;
+
+            return new VehicleDto()
             {
-                Vehicles = _vehicleRepository.GetVehicles()
+                Id = vehicle.Id,
+                Doors = vehicle.Doors,
+                Wheels = vehicle.Wheels,
+                Type = vehicle.Type.Name
             };
         }
     }

@@ -1,9 +1,10 @@
-using CarSales.Web.Domain.Models;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace CarSales.Web.Models
+namespace CarSales.Web.Application.ViewModels
 {
-    public class Vehicle
+    public class VehicleDto
     {
         public int Id { get; set; }
 
@@ -17,12 +18,6 @@ namespace CarSales.Web.Models
 
         public string Description { get; set; }
 
-        public int TypeId { get; set; }
-
-        public VehicleType Type { get; set; }
-
-        public Registration Registration { get; set; }
-
-        public List<VehicleAttribute> Attributes { get; set; }
+        public string Type { get; set; }
     }
 }

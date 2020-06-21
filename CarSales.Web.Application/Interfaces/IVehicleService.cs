@@ -4,6 +4,6 @@ namespace CarSales.Web.Appplication.Interfaces
 {
     public interface IVehicleService
     {
-        public VehicleViewModel GetVehicles();
+        public VehicleDto GetVehicle(int vehicleId);
     }
 }
