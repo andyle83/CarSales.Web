@@ -13,7 +13,7 @@ namespace CarSales.Web.Api.Controllers
     {
         private readonly ILogger<VehicleController> _logger;
 
-        public IVehicleService _vehicleService;
+        private IVehicleService _vehicleService;
 
         public VehicleController(ILogger<VehicleController> logger, IVehicleService vehicleService)
         {

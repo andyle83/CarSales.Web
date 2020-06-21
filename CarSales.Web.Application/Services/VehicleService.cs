@@ -1,21 +1,24 @@
-﻿using CarSales.Web.Application.ViewModels;
+﻿using AutoMapper;
+using CarSales.Web.Application.ViewModels;
 using CarSales.Web.Appplication.Interfaces;
 using CarSales.Web.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 
 namespace CarSales.Web.Application.Services
 {
     public class VehicleService : IVehicleService
     {
-        public ILogger<VehicleService> _logger;
+        private ILogger<VehicleService> _logger;
 
-        public IVehicleRepository _vehicleRepository;
+        private IVehicleRepository _vehicleRepository;
 
-        public VehicleService(ILogger<VehicleService> logger, IVehicleRepository vehicleRepository)
+        private IMapper _mapper;
+
+        public VehicleService(ILogger<VehicleService> logger, IVehicleRepository vehicleRepository, IMapper mapper)
         {
             _logger = logger;
             _vehicleRepository = vehicleRepository;
+            _mapper = mapper;
         }
 
         public VehicleDto GetVehicle(int vehicleId)
@@ -24,16 +27,7 @@ namespace CarSales.Web.Application.Services
 
             var vehicle = _vehicleRepository.GetVehicle(vehicleId);
 
-            // TODO: Should handle this convert in a mapper
-            if (vehicle == null) return null;
-
-            return new VehicleDto()
-            {
-                Id = vehicle.Id,
-                Doors = vehicle.Doors,
-                Wheels = vehicle.Wheels,
-                Type = vehicle.Type.Name
-            };
+            return _mapper.Map<VehicleDto>(vehicle);
         }
     }
 }

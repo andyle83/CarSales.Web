@@ -1,16 +1,14 @@
 ﻿using CarSales.Web.Domain.Interfaces;
 using CarSales.Web.Infra.Data.Context;
 using CarSales.Web.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CarSales.Web.Infra.Data.Repositories
 {
     public class VehicleTypeRepository : IVehicleTypeRepository
     {
-        public VehicleDbContext _dbContext;
+        private VehicleDbContext _dbContext;
 
         public VehicleTypeRepository(VehicleDbContext dbContext)
         {

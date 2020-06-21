@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CarSales.Web.Application.ViewModels
+﻿namespace CarSales.Web.Application.ViewModels
 {
     public class VehicleDto
     {

@@ -1,7 +1,5 @@
 ﻿using CarSales.Web.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarSales.Web.Domain.Interfaces
 {

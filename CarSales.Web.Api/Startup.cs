@@ -1,3 +1,5 @@
+using AutoMapper;
+using CarSales.Web.Application;
 using CarSales.Web.Infra.Data.Context;
 using CarSales.Web.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
@@ -28,6 +30,8 @@ namespace CarSales.Web.Api
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
+
+            services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
             services.AddDbContext<VehicleDbContext>();
 

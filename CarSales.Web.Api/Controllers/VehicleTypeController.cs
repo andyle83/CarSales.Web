@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CarSales.Web.Application.Interfaces;
+﻿using CarSales.Web.Application.Interfaces;
 using CarSales.Web.Application.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarSales.Web.Api.Controllers
 {
@@ -17,7 +15,7 @@ namespace CarSales.Web.Api.Controllers
     {
         private readonly ILogger<VehicleTypeController> _logger;
 
-        public IVehicleTypeService _vehicleTypeService;
+        private IVehicleTypeService _vehicleTypeService;
 
         public VehicleTypeController(ILogger<VehicleTypeController> logger, IVehicleTypeService vehicleTypeService)
         {
