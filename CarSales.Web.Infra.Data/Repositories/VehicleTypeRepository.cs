@@ -1,5 +1,6 @@
 ﻿using CarSales.Web.Domain.Interfaces;
 using CarSales.Web.Domain.Models;
+using CarSales.Web.Domain.Models.Queries;
 using CarSales.Web.Infra.Data.Context;
 using CarSales.Web.Models;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +35,28 @@ namespace CarSales.Web.Infra.Data.Repositories
             return result;
         }
 
+        public async Task<QueryResult<Vehicle>> GetVehiclesAsync(VehiclesQuery query)
+        {
+            IQueryable<Vehicle> queryable = _context.Vehicles;
+
+            if (query.VehicleTypeId.HasValue && query.VehicleTypeId > 0)
+            {
+                queryable = queryable.Where(t => t.TypeId == query.VehicleTypeId);
+            }
+
+            int totalItems = await queryable.CountAsync();
+
+            List<Vehicle> vehicles = await queryable.Skip((query.Page - 1) * query.ItemsPerPage)
+                                        .Take(query.ItemsPerPage)
+                                        .ToListAsync();
+
+            return new QueryResult<Vehicle>
+            {
+                Items = vehicles,
+                TotalItems = totalItems
+            };
+        }
+
         public IEnumerable<Vehicle> GetVehicles(int vehicleTypeId)
         {
             var type = _context.VehicleTypes
@@ -48,6 +71,14 @@ namespace CarSales.Web.Infra.Data.Repositories
                             .ToList();
 
             return vehicles;
+        }
+
+        public async Task<int> AddVehicleTypeAsync(VehicleType vehicleType)
+        {
+            await _context.VehicleTypes.AddAsync(vehicleType);
+            await _context.SaveChangesAsync();
+
+            return vehicleType.Id;
         }
     }
 }

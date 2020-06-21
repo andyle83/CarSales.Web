@@ -1,7 +1,4 @@
 ﻿using CarSales.Web.Infra.Data.Context;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CarSales.Web.Infra.Data.Repositories
 {

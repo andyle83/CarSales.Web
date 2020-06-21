@@ -1,5 +1,4 @@
-﻿using CarSales.Web.Application.ViewModels;
-using CarSales.Web.Appplication.Interfaces;
+﻿using CarSales.Web.Appplication.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

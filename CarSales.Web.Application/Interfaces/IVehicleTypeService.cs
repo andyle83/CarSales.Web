@@ -8,7 +8,11 @@ namespace CarSales.Web.Application.Interfaces
     {
         public Task<IEnumerable<VehicleTypeDto>> GetVehicleTypesAsync();
 
+        public Task<VehicleTypeDto> AddVehicleTypeAsync(SaveVehicleTypeDto vehicleTypeDto);
+
         public Task<VehicleTypeDto> GetVehicleTypeAsync(int vehicleTypeId);
+
+        public Task<QueryResultDto<VehicleDto>> GetVehiclesAsync(VehiclesQueryDto query);
 
         public IEnumerable<VehicleDto> GetVehicles(int vehicleTypeId);
     }
