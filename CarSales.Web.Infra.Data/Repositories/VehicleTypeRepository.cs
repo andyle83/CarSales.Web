@@ -19,7 +19,6 @@ namespace CarSales.Web.Infra.Data.Repositories
         public async Task<IEnumerable<VehicleType>> GetVehicleTypesAsync()
         {
             var result = await _context.VehicleTypes
-                            .Include(v => v.Vehicles)
                             .AsNoTracking()
                             .ToListAsync();
 

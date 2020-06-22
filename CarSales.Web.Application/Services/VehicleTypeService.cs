@@ -38,12 +38,12 @@ namespace CarSales.Web.Application.Services
             return result;
         }
 
-        public async Task<VehicleTypeDto> GetVehicleTypeAsync(int vehicleTypeId)
+        public async Task<VehicleTypeDetailsDto> GetVehicleTypeAsync(int vehicleTypeId)
         {
             _logger.LogInformation($"Calling {nameof(GetVehicleTypeAsync)} of {nameof(VehicleTypeService)} with id {vehicleTypeId}");
 
             var vehicleType = await _vehicleTypeRepository.GetVehicleTypeAsync(vehicleTypeId);
-            var result = _mapper.Map<VehicleTypeDto>(vehicleType);
+            var result = _mapper.Map<VehicleType, VehicleTypeDetailsDto>(vehicleType);
 
             return result;
         }
@@ -81,7 +81,7 @@ namespace CarSales.Web.Application.Services
                 // TODO: Need to throw an error if code is existed
                 await _vehicleTypeRepository.AddVehicleTypeAsync(vehicleType);
 
-                var result = _mapper.Map<VehicleType, VehicleTypeDto>(vehicleType);
+                var result = _mapper.Map<VehicleType, VehicleTypeDetailsDto>(vehicleType);
 
                 return new VehicleTypeResponse(result);
             }

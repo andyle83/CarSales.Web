@@ -1,15 +1,19 @@
 ﻿using CarSales.Web.Application.ViewModels;
+using CarSales.Web.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace CarSales.Web.Application.Communication
 {
-    public class VehicleTypeResponse : BaseResponse<VehicleTypeDetailsDto>
+    public class VehicleListResponse : BaseResponse<IEnumerable<VehicleDto>>
     {
         /// <summary>
         /// Creates a success response.
         /// </summary>
-        /// <param name="vehicleType">Saved vehicle type.</param>
+        /// <param name="vehicles">Vehicle List.</param>
         /// <returns>Response.</returns>
-        public VehicleTypeResponse(VehicleTypeDetailsDto vehicleType) : base(vehicleType)
+        public VehicleListResponse(IEnumerable<VehicleDto> vehicles) : base(vehicles)
         { }
 
         /// <summary>
@@ -17,7 +21,7 @@ namespace CarSales.Web.Application.Communication
         /// </summary>
         /// <param name="message">Error message.</param>
         /// <returns>Response.</returns>
-        public VehicleTypeResponse(string message) : base(message)
+        public VehicleListResponse(string message) : base(message)
         { }
     }
 }

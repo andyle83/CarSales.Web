@@ -14,7 +14,5 @@ namespace CarSales.Web.Application.ViewModels
         [Required]
         [MaxLength(10)]
         public string Name { get; set; }
-
-        public virtual ICollection<VehicleDto> Vehicles { get; set; }
     }
 }

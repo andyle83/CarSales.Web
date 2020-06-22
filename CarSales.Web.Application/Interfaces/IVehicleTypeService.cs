@@ -11,7 +11,7 @@ namespace CarSales.Web.Application.Interfaces
 
         public Task<VehicleTypeResponse> AddVehicleTypeAsync(SaveVehicleTypeDto vehicleTypeDto);
 
-        public Task<VehicleTypeDto> GetVehicleTypeAsync(int vehicleTypeId);
+        public Task<VehicleTypeDetailsDto> GetVehicleTypeAsync(int vehicleTypeId);
 
         public Task<QueryResultDto<VehicleDto>> GetVehiclesAsync(VehiclesQueryDto query);
 

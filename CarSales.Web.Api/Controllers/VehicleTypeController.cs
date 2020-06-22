@@ -4,6 +4,7 @@ using CarSales.Web.Application.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CarSales.Web.Api.Controllers
@@ -28,8 +29,8 @@ namespace CarSales.Web.Api.Controllers
         /// </summary>
         /// <returns>Response for the request.</returns>
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(VehicleTypeListResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetVehicleTypes()
         {
             _logger.LogInformation($"Calling {nameof(GetVehicleTypes)} of {nameof(VehicleTypeController)}");
@@ -38,10 +39,10 @@ namespace CarSales.Web.Api.Controllers
 
             if (vehicleTypes == null)
             {
-                return NotFound();
+                return NotFound(new ErrorResponse("Not found any vehicle types."));
             }
 
-            return Ok(vehicleTypes);
+            return Ok(new VehicleTypeListResponse(vehicleTypes));
         }
 
         /// <summary>
@@ -94,8 +95,8 @@ namespace CarSales.Web.Api.Controllers
         /// <param name="id">Vehicle Type identifier.</param>
         /// <returns>Response for the request.</returns>
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(VehicleListResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
         [Route("{id}/Vehicle/")]
         public IActionResult GetVehiclesByType(int id)
         {
@@ -105,10 +106,10 @@ namespace CarSales.Web.Api.Controllers
 
             if (vehicles == null)
             {
-                return NotFound();
+                return NotFound(new ErrorResponse("Not found any vehicles."));
             }
 
-            return Ok(vehicles);
+            return Ok(new VehicleListResponse(vehicles));
         }
 
         /// <summary>
