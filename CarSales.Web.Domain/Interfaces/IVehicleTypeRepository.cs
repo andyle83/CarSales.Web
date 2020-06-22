@@ -10,7 +10,7 @@ namespace CarSales.Web.Domain.Interfaces
     {
         public Task<IEnumerable<VehicleType>> GetVehicleTypesAsync();
 
-        public Task<int> AddVehicleTypeAsync(VehicleType vehicleType);
+        public Task AddVehicleTypeAsync(VehicleType vehicleType);
 
         public Task<VehicleType> GetVehicleTypeAsync(int vehicleTypeId);
 

@@ -1,4 +1,5 @@
-﻿using CarSales.Web.Application.Interfaces;
+﻿using CarSales.Web.Application.Communication;
+using CarSales.Web.Application.Interfaces;
 using CarSales.Web.Application.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,8 +24,9 @@ namespace CarSales.Web.Api.Controllers
         }
 
         /// <summary>
-        /// List of vehicle types
+        /// List of vehicle types.
         /// </summary>
+        /// <returns>Response for the request.</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -43,12 +45,13 @@ namespace CarSales.Web.Api.Controllers
         }
 
         /// <summary>
-        /// Get details of a vehicle type
+        /// Get details of a vehicle type.
         /// </summary>
-        /// <param name="id">Vehicle Type Id</param>
+        /// <param name="id">Vehicle Type identifier.</param>
+        /// <returns>Response for the request.</returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(VehicleTypeResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetVehicleTypeAsync(int id)
         {
             _logger.LogInformation($"Calling {nameof(GetVehicleTypeAsync)} of {nameof(VehicleTypeController)} with id {id}");
@@ -57,36 +60,39 @@ namespace CarSales.Web.Api.Controllers
 
             if (vehicleType == null)
             {
-                return NotFound();
+                return NotFound(new ErrorResponse("Vehicle Type is not found."));
             }
 
-            return Ok(vehicleType);
+            return Ok(new VehicleTypeResponse(vehicleType));
         }
 
         /// <summary>
-        /// Add new vehicle type
+        /// Add new vehicle type.
         /// </summary>
-        [HttpPut]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> AddVehicleTypeAsync([FromBody] SaveVehicleTypeDto vehicleTypeDto)
+        /// <param name="resource">Vehicle Type details data.</param>
+        /// <returns>Response for the request.</returns>
+        [HttpPost]
+        [ProducesResponseType(typeof(VehicleTypeResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> AddVehicleTypeAsync([FromBody] SaveVehicleTypeDto resource)
         {
-            _logger.LogInformation($"Calling {nameof(AddVehicleTypeAsync)} of {nameof(VehicleTypeController)} with code {vehicleTypeDto.Code}");
+            _logger.LogInformation($"Calling {nameof(AddVehicleTypeAsync)} of {nameof(VehicleTypeController)} with code {resource.Code}");
 
-            var result = await _vehicleTypeService.AddVehicleTypeAsync(vehicleTypeDto);
+            var result = await _vehicleTypeService.AddVehicleTypeAsync(resource);
 
             if (!result.Success)
             {
-                return BadRequest(result.Message);
+                return BadRequest(new ErrorResponse(result.Message));
             }
 
             return Ok(result.Resource);
         }
 
         /// <summary>
-        /// List of all vehicles in a specific type with id
+        /// List of all vehicles in a specific type with id.
         /// </summary>
-        /// <param name="id">Vehicle Type Id</param>
+        /// <param name="id">Vehicle Type identifier.</param>
+        /// <returns>Response for the request.</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -106,15 +112,16 @@ namespace CarSales.Web.Api.Controllers
         }
 
         /// <summary>
-        /// List of all vehicles in a specific type with query
+        /// Query vehicle list.
         /// </summary>
-        /// <param name="query">Vehicle Type Query</param>
+        /// <param name="query">Vehicle Type Query.</param>
+        /// <returns>Response for the request.</returns>
         [HttpGet]
         [ProducesResponseType(typeof(QueryResultDto<VehicleDto>), StatusCodes.Status200OK)]
         [Route("GetVehicles")]
-        public async Task<QueryResultDto<VehicleDto>> GetVehiclesByTypeAsync([FromQuery] VehiclesQueryDto query)
+        public async Task<QueryResultDto<VehicleDto>> QueryVehiclesAsync([FromQuery] VehiclesQueryDto query)
         {
-            _logger.LogInformation($"Calling {nameof(GetVehiclesByTypeAsync)} of {nameof(VehicleTypeController)} with id {query.VehicleTypeId}");
+            _logger.LogInformation($"Calling {nameof(QueryVehiclesAsync)} of {nameof(VehicleTypeController)} with id {query.VehicleTypeId}");
 
             var vehicles = await _vehicleTypeService.GetVehiclesAsync(query);
 

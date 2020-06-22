@@ -22,5 +22,23 @@ namespace CarSales.Web.Infra.Data.Repositories
 
             return vehicle;
         }
+
+        public async Task AddVehicleAsync(Vehicle vehicle)
+        {
+            await _context.Vehicles.AddAsync(vehicle);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task RemoveVehicleAsync(Vehicle vehicle)
+        {
+            _context.Vehicles.Remove(vehicle);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateVehicleAsync(Vehicle vehicle)
+        {
+            _context.Vehicles.Update(vehicle);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -17,7 +17,9 @@ namespace CarSales.Web.Application
             CreateMap<VehiclesQueryDto, VehiclesQuery>();
 
             CreateMap<VehicleType, VehicleTypeDto>();
+
             CreateMap<SaveVehicleTypeDto, VehicleType>();
+            CreateMap<SaveVehicleDto, Vehicle>();
         }
     }
 }

@@ -87,9 +87,9 @@ namespace CarSales.Web.Application.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError($"An error occurred when saving a new vehicle type with code {saveVehicleTypeDto.Code}");
+                _logger.LogError($"An issue occurred when saving the vehicle type with code {saveVehicleTypeDto.Code} with error message {ex.Message}");
 
-                return new VehicleTypeResponse($"An error occurred when saving the category: {ex.Message}");
+                return new VehicleTypeResponse($"An error occurred when saving the vehicle type: {ex.Message}");
             }
         }
     }

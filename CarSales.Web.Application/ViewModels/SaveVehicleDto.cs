@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DataAnnotationsExtensions;
+using System.ComponentModel.DataAnnotations;
 
 namespace CarSales.Web.Application.ViewModels
 {
-    public class VehicleDto
+    public class SaveVehicleDto
     {
-        public int Id { get; set; }
-
         [Required]
         [Range(2, 10)]
         public int Doors { get; set; }
@@ -25,8 +24,7 @@ namespace CarSales.Web.Application.ViewModels
         public string Description { get; set; }
 
         [Required]
+        [Min(1)]
         public int TypeId { get; set; }
-
-        public string Type { get; set; }
     }
 }

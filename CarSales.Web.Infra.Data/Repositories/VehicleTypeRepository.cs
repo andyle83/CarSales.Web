@@ -30,6 +30,8 @@ namespace CarSales.Web.Infra.Data.Repositories
         {
             var result = await _context.VehicleTypes
                             .Where(t => t.Id == vehicleTypeId)
+                            .Include(v => v.Vehicles)
+                            .AsNoTracking()
                             .FirstOrDefaultAsync();
 
             return result;
@@ -48,6 +50,7 @@ namespace CarSales.Web.Infra.Data.Repositories
 
             List<Vehicle> vehicles = await queryable.Skip((query.Page - 1) * query.ItemsPerPage)
                                         .Take(query.ItemsPerPage)
+                                        .AsNoTracking()
                                         .ToListAsync();
 
             return new QueryResult<Vehicle>
@@ -73,12 +76,10 @@ namespace CarSales.Web.Infra.Data.Repositories
             return vehicles;
         }
 
-        public async Task<int> AddVehicleTypeAsync(VehicleType vehicleType)
+        public async Task AddVehicleTypeAsync(VehicleType vehicleType)
         {
             await _context.VehicleTypes.AddAsync(vehicleType);
             await _context.SaveChangesAsync();
-
-            return vehicleType.Id;
         }
     }
 }
