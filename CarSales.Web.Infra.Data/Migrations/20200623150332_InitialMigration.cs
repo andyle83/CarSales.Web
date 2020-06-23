@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarSales.Web.Infra.Data.Migrations
 {
@@ -119,17 +119,17 @@ namespace CarSales.Web.Infra.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 1, null, 4, "Volkswagen Group", "Ford Ranger", null, 1, 4 });
+                values: new object[] { 1, null, 4, "Honda", "Hyundai i30", null, 1, 4 });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 2, null, 4, "General Motors", "Hyundai i30", null, 1, 4 });
+                values: new object[] { 2, null, 4, "Hyundai / Kia", "Toyota Hilux", null, 1, 4 });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 3, null, 4, "Toyota", "Ford Ranger", null, 1, 4 });
+                values: new object[] { 3, null, 4, "FCA", "Toyota Corolla", null, 1, 4 });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
@@ -139,32 +139,32 @@ namespace CarSales.Web.Infra.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 5, null, 4, "General Motors", "Ford Ranger", null, 1, 4 });
+                values: new object[] { 5, null, 4, "Honda", "Toyota Hilux", null, 1, 4 });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 6, null, 4, "General Motors", "Hyundai i30", null, 1, 4 });
+                values: new object[] { 6, null, 4, "Toyota", "Toyota Hilux", null, 1, 4 });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 7, null, 4, "Group PSA", "Ford Ranger", null, 1, 4 });
+                values: new object[] { 7, null, 4, "Ford", "Hyundai i30", null, 1, 4 });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 8, null, 4, "General Motors", "Hyundai Tucson", null, 1, 4 });
+                values: new object[] { 8, null, 4, "Renault", "Toyota Corolla", null, 1, 4 });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 9, null, 4, "Renault", "Toyota Corolla", null, 1, 4 });
+                values: new object[] { 9, null, 4, "Toyota", "Toyota Corolla", null, 1, 4 });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 10, null, 4, "Honda", "Hyundai i30", null, 1, 4 });
+                values: new object[] { 10, null, 4, "Volkswagen Group", "Hyundai Tucson", null, 1, 4 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_VehicleAttribute_VehicleId",

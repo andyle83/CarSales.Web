@@ -1,5 +1,4 @@
-﻿using DataAnnotationsExtensions;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CarSales.Web.Application.ViewModels
 {
@@ -24,7 +23,7 @@ namespace CarSales.Web.Application.ViewModels
         public string Description { get; set; }
 
         [Required]
-        [Min(1)]
+        [Range(1, int.MaxValue)]
         public int TypeId { get; set; }
     }
 }

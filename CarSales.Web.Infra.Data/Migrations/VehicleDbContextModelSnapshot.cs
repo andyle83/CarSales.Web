@@ -160,8 +160,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 1,
                             Doors = 4,
-                            Make = "Volkswagen Group",
-                            Model = "Ford Ranger",
+                            Make = "Honda",
+                            Model = "Hyundai i30",
                             TypeId = 1,
                             Wheels = 4
                         },
@@ -169,8 +169,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 2,
                             Doors = 4,
-                            Make = "General Motors",
-                            Model = "Hyundai i30",
+                            Make = "Hyundai / Kia",
+                            Model = "Toyota Hilux",
                             TypeId = 1,
                             Wheels = 4
                         },
@@ -178,8 +178,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 3,
                             Doors = 4,
-                            Make = "Toyota",
-                            Model = "Ford Ranger",
+                            Make = "FCA",
+                            Model = "Toyota Corolla",
                             TypeId = 1,
                             Wheels = 4
                         },
@@ -196,8 +196,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 5,
                             Doors = 4,
-                            Make = "General Motors",
-                            Model = "Ford Ranger",
+                            Make = "Honda",
+                            Model = "Toyota Hilux",
                             TypeId = 1,
                             Wheels = 4
                         },
@@ -205,8 +205,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 6,
                             Doors = 4,
-                            Make = "General Motors",
-                            Model = "Hyundai i30",
+                            Make = "Toyota",
+                            Model = "Toyota Hilux",
                             TypeId = 1,
                             Wheels = 4
                         },
@@ -214,23 +214,14 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 7,
                             Doors = 4,
-                            Make = "Group PSA",
-                            Model = "Ford Ranger",
+                            Make = "Ford",
+                            Model = "Hyundai i30",
                             TypeId = 1,
                             Wheels = 4
                         },
                         new
                         {
                             Id = 8,
-                            Doors = 4,
-                            Make = "General Motors",
-                            Model = "Hyundai Tucson",
-                            TypeId = 1,
-                            Wheels = 4
-                        },
-                        new
-                        {
-                            Id = 9,
                             Doors = 4,
                             Make = "Renault",
                             Model = "Toyota Corolla",
@@ -239,10 +230,19 @@ namespace CarSales.Web.Infra.Data.Migrations
                         },
                         new
                         {
+                            Id = 9,
+                            Doors = 4,
+                            Make = "Toyota",
+                            Model = "Toyota Corolla",
+                            TypeId = 1,
+                            Wheels = 4
+                        },
+                        new
+                        {
                             Id = 10,
                             Doors = 4,
-                            Make = "Honda",
-                            Model = "Hyundai i30",
+                            Make = "Volkswagen Group",
+                            Model = "Hyundai Tucson",
                             TypeId = 1,
                             Wheels = 4
                         });
