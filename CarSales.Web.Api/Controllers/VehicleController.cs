@@ -64,7 +64,7 @@ namespace CarSales.Web.Api.Controllers
                 return BadRequest(new ErrorResponse(result.Message));
             }
 
-            return Ok(result.Resource);
+            return Ok(result);
         }
 
         /// <summary>
