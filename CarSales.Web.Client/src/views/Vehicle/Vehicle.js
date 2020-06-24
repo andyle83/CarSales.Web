@@ -12,10 +12,12 @@ import Alert from 'react-bootstrap/Alert';
 import { Pen, Trash  } from 'react-bootstrap-icons';
 
 import { createVehicle } from '../../actions/actions';
+import Status from '../../components/Status/Status';
 
 export default function Vehicle() {
   const dispatch = useDispatch();
   const vehicleType = useSelector(state => state.types?.vehicleType);
+  const error = useSelector(state => state.vehicles?.error);
 
   const [doors, setDoors] = useState(2);
   const [wheels, setWheels] = useState(4);
@@ -51,10 +53,6 @@ export default function Vehicle() {
     if (isValid) {
       // create new vehicle
       dispatch(createVehicle({ typeId, doors, wheels, model, make }));
-      //TODO: Inform user about the result (i.e, success or failure or unable to create)
-
-      // fetching update vehicles list to the table
-      // dispatch(getVehicleTypedDetails(typeId))
     }
   }
 
@@ -62,6 +60,7 @@ export default function Vehicle() {
     <>
     <Row>
       <Col sm="auto">
+        {error && <Status message={error} isError={(error.length > 0)} />}
         <p><b>Create / Update Vehicle</b></p>
         <Form onSubmit={handleSubmit}>
           <Form.Row>

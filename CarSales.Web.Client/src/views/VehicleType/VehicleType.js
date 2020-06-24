@@ -9,11 +9,12 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 
 import { getVehicleTypedDetails } from '../../actions/actions';
+import Status from '../../components/Status/Status';
 
 function VehicleType() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const vehicleTypes = useSelector(state => state.types?.vehicleTypes);
+  const { vehicleTypes, error } = useSelector(state => state.types);
 
   const [isValid, setIsValid] = useState(true);
   const [vehicleTypeId, setVehicleTypeId] = useState(0);
@@ -44,6 +45,7 @@ function VehicleType() {
     <>
       <Row>
         <Col sm="auto">
+          {error && <Status message={error} isError={error !== null} />}
           <Form inline onSubmit={handleSubmit}>
             <Form.Control as="select" style={{ paddingLeft: 0, marginRight: 20, marginTop: 20 }} onChange={handleSelect}>
               <option value="0">Select Vehicle Type</option>
