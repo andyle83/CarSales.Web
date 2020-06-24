@@ -41,6 +41,8 @@ Navigate to ```https://localhost:5001/``` to check the API documentation.
 
 To test all endpoints, you'll need to use a software such as [Postman](https://www.getpostman.com/).
 
+![API Documentation](https://raw.githubusercontent.com/andyle83/CarSales.Web/master/Screenshots/API.PNG)
+
 ### Client
 
 It is bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -52,3 +54,9 @@ In the project directory, you can run:
 `yarn test` - Launches the test runner in the interactive watch mode.
 
 `yarn build` - Builds the app for production to the `build` folder.
+
+![Select Vehicle Type](https://raw.githubusercontent.com/andyle83/CarSales.Web/master/Screenshots/SelectVehicleType.PNG)
+
+![Incorrect Select Vehicle Type](https://raw.githubusercontent.com/andyle83/CarSales.Web/master/Screenshots/InValidSelectVehicleType.PNG)
+
+![Vehicle Management Page](https://raw.githubusercontent.com/andyle83/CarSales.Web/master/Screenshots/VehicleManagement.PNG)
