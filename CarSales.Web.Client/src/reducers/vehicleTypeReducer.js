@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     vehicleTypes: [],
     vehicleType: {},
+    loading: false,
     error: "",
 };
 

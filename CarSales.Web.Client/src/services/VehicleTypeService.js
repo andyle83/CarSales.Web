@@ -18,7 +18,7 @@ class VehicleTypeService {
         }
         
         const data = await response.json();
-        
+
         if (!data.success) {
             throw new Error(`Server request is failed with error message ${data.message}`);
         }

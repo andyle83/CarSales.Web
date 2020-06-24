@@ -55,6 +55,10 @@ In the project directory, you can run:
 
 `yarn build` - Builds the app for production to the `build` folder.
 
+Vehicle Type list selection screenshot
+
 ![Select Vehicle Type](https://raw.githubusercontent.com/andyle83/CarSales.Web/master/Screenshots/SelectVehicleType.PNG)
+
+Vehicle management ( Create / Update / Delete ) screenshot
 
 ![Vehicle Management Page](https://raw.githubusercontent.com/andyle83/CarSales.Web/master/Screenshots/VehicleManagement.PNG)

@@ -1,4 +1,5 @@
 import * as types from './actionTypes';
+import * as vehicles from './actionVehicles';
 
 // Get vehicle type actions
 export function getVehicleTypeList() {
@@ -39,6 +40,28 @@ export function getVehicleTypedDetailsSuccess(vehicleType) {
 export function getVehicleTypedDetailsFailure(error) {
     return {
         type: types.GET_VEHICLE_TYPE_DETAILS_FAILURE,
-        error: error,
+        error,
+    };
+}
+
+// Create a new vehicle
+export function createVehicle(vehicle) {
+    return {
+        type: vehicles.CREATE_VEHICLE,
+        vehicle,
+    };
+}
+
+export function createVehicleSuccess(vehicle) {
+    return {
+        type: vehicles.CREATE_VEHICLE_SUCCESS,
+        vehicle,
+    };
+}
+
+export function createVehicleFailure(error) {
+    return {
+        type: vehicles.CREATE_VEHICLE_FAILURE,
+        error,
     };
 }
