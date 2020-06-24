@@ -22,22 +22,23 @@ export function getVehicleTypeListFailure(error) {
 }
 
 // Get vehicle type details action
-export function getVehicleTypedDetails() {
+export function getVehicleTypedDetails(id) {
     return {
-        type: types.GET_VEHICLE_TYPE_DETAILS
+        type: types.GET_VEHICLE_TYPE_DETAILS,
+        id,
     }
 }
 
 export function getVehicleTypedDetailsSuccess(vehicleType) {
     return {
-        type: types.GET_VEHICLE_TYPE_DETAILS,
+        type: types.GET_VEHICLE_TYPE_DETAILS_SUCCESS,
         vehicleType,
     };
 }
 
 export function getVehicleTypedDetailsFailure(error) {
     return {
-        type: types.GET_VEHICLE_TYPE_DETAILS,
+        type: types.GET_VEHICLE_TYPE_DETAILS_FAILURE,
         error: error,
     };
 }

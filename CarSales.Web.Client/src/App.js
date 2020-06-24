@@ -12,8 +12,8 @@ import Header from './components/Header/Header';
 
 const styles = {
   container: {
-      paddingLeft: 50,
-      paddingRight: 50,
+      paddingLeft: 20,
+      paddingRight: 20,
       paddingTop: 20,
   }
 };

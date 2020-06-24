@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import Col from 'react-bootstrap/Col';
@@ -8,8 +8,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 
+import { getVehicleTypedDetails } from '../../actions/actions';
+
 function VehicleType() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const vehicleTypes = useSelector(state => state.types?.vehicleTypes);
 
   const [isValid, setIsValid] = useState(true);
@@ -30,8 +33,10 @@ function VehicleType() {
       setIsValid(false);
     } else {
       // fetch vehicle list belong to type
+      dispatch(getVehicleTypedDetails(vehicleTypeId))
+
       // move to vehicle type, with existing list and form
-      history.push(`/vehicletype/${vehicleTypeId}`);
+      history.push(`/vehicle/`);
     }
   }
 
@@ -40,7 +45,7 @@ function VehicleType() {
       <Row>
         <Col sm="auto">
           <Form inline onSubmit={handleSubmit}>
-            <Form.Control as="select" style={{ paddingLeft: 0, marginRight: 20 }} onChange={handleSelect}>
+            <Form.Control as="select" style={{ paddingLeft: 0, marginRight: 20, marginTop: 20 }} onChange={handleSelect}>
               <option value="0">Select Vehicle Type</option>
               {vehicleTypes.map((type) => (
                   <option key={type.id} value={type.id}>
@@ -48,7 +53,7 @@ function VehicleType() {
                   </option>
               ))}
             </Form.Control>
-            <Button variant="primary" type="submit">
+            <Button variant="dark" style={{ marginTop: 20 }} type="submit">
               Create Vehicle
             </Button>
           </Form>

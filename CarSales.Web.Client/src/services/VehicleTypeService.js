@@ -38,12 +38,16 @@ class VehicleTypeService {
         });
         
         if (!response.ok) {
-            throw new Error(`VehicleTypeService.getVehicleTypeDetailsAsync failed, HTTP status ${response.status}`);
+            throw new Error(`Server request is failed with HTTP status ${response.status}`);
         }
         
         const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(`Server request is failed with error message ${data.message}`);
+        }
         
-        return data;
+        return data.resource;
     }
 }
 

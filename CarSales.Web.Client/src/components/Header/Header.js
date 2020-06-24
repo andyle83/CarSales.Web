@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 const styles = {
     row: {
         marginTop: 10,
-        marginBottom: 20,
+        marginBottom: 10
     }
 };  
 

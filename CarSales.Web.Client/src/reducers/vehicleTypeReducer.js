@@ -35,11 +35,25 @@ const vehicleTypeReducer = (state, action) => {
 
         case actionTypes.GET_VEHICLE_TYPE_DETAILS:
             return { 
-                ...state, 
-                vehicleType: action?.vehicleType,
+                ...state,
                 loading: true,
                 error: null 
             };
+
+        case actionTypes.GET_VEHICLE_TYPE_DETAILS_SUCCESS:
+            return {
+                ...state,
+                vehicleType: action?.vehicleType,
+                loading: false,
+                error: null
+            };
+
+        case actionTypes.GET_VEHICLE_TYPE_DETAILS_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action?.error?.message
+            }
 
         default:
             return state;

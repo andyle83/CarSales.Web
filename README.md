@@ -1,6 +1,7 @@
 # CarSales.Web
 
-Simple RESTful API built with ASP.NET Core 3.1 to create RESTful services to manage a list of Cars or Vehicles
+Simple CarSales Web Application built with RESTful API ASP.NET Core 3.1 and React 16.13.x <br />
+Allowing users to manage a list of vehicle / vehicles type in an in-memory database.
 
 ## Changes list
 
