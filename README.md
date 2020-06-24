@@ -57,6 +57,4 @@ In the project directory, you can run:
 
 ![Select Vehicle Type](https://raw.githubusercontent.com/andyle83/CarSales.Web/master/Screenshots/SelectVehicleType.PNG)
 
-![Incorrect Select Vehicle Type](https://raw.githubusercontent.com/andyle83/CarSales.Web/master/Screenshots/InValidSelectVehicleType.PNG)
-
 ![Vehicle Management Page](https://raw.githubusercontent.com/andyle83/CarSales.Web/master/Screenshots/VehicleManagement.PNG)
