@@ -23,10 +23,10 @@ export default function Vehicle() {
   const [make, setMake] = useState('');
 
   const vehicles = vehicleType?.vehicles;
-  const vehicleTypeId = vehicleType?.id;
+  const typeId = vehicleType?.id;
 
   const isInputValid = doors > 0 && wheels > 1 && model.length > 1 && make.length > 1;
-  const isVehicleTypeValid = !isNaN(vehicleTypeId) && vehicleTypeId > 0;
+  const isVehicleTypeValid = !isNaN(typeId) && typeId > 0;
   const isValid = isVehicleTypeValid && isInputValid;
   
   const handleDoorsChange = (event) => {
@@ -49,9 +49,12 @@ export default function Vehicle() {
     event.preventDefault();
 
     if (isValid) {
-      dispatch(createVehicle({ doors, wheels, model, make }));
+      // create new vehicle
+      dispatch(createVehicle({ typeId, doors, wheels, model, make }));
       //TODO: Inform user about the result (i.e, success or failure or unable to create)
-      //TODO: Fetching update vehicles list to the table
+
+      // fetching update vehicles list to the table
+      // dispatch(getVehicleTypedDetails(typeId))
     }
   }
 
@@ -95,7 +98,7 @@ export default function Vehicle() {
             <Button variant="dark" type="submit" disabled={!isValid} style={{ marginRight: 10 }}>
               Create Vehicle
             </Button>
-            {!isVehicleTypeValid && <Link to="/">(*) Need to select a vehicle type !</Link>}
+            {!isVehicleTypeValid && <Link style={{color: 'red'}} to="/">[*] Need to select a vehicle type !</Link>}
           </Form.Row>
           <hr />
         </Form>
