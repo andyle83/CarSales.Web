@@ -5,7 +5,7 @@ namespace CarSales.Web.Application.ViewModels
     public class SaveVehicleDto
     {
         [Required]
-        [Range(2, 10)]
+        [Range(0, 10)]
         public int Doors { get; set; }
 
         [Required]

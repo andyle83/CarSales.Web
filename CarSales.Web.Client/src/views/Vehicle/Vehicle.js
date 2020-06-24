@@ -25,7 +25,7 @@ export default function Vehicle() {
   const vehicles = vehicleType?.vehicles;
   const typeId = vehicleType?.id;
 
-  const isInputValid = doors > 0 && wheels > 1 && model.length > 1 && make.length > 1;
+  const isInputValid = doors >= 0 && wheels > 1 && model.length > 1 && make.length > 1;
   const isVehicleTypeValid = !isNaN(typeId) && typeId > 0;
   const isValid = isVehicleTypeValid && isInputValid;
   
@@ -68,9 +68,6 @@ export default function Vehicle() {
           <Form.Group as={Col} md={4}>
             <Form.Label htmlFor="doorsInput">Doors</Form.Label>
             <Form.Control type="text" id="doorsInput" value={doors} onChange={handleDoorsChange} placeholder="2" disabled={!isVehicleTypeValid} />
-            <Form.Text id="doorsHelpBlock" muted>
-              Must be greater than 1
-            </Form.Text>
           </Form.Group>
 
           <Form.Group as={Col} md={8}>
@@ -121,9 +118,9 @@ export default function Vehicle() {
                 </tr>
               </thead>
               <tbody>
-                {vehicles.map(({id, doors, wheels, model, make}) => (
+                {vehicles.map(({id, doors, wheels, model, make}, index) => (
                   <tr key={id}>
-                    <td>{id}</td>
+                    <td>{index + 1}</td>
                     <td>{doors}</td>
                     <td>{wheels}</td>
                     <td>{model}</td>

@@ -160,8 +160,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 1,
                             Doors = 4,
-                            Make = "Honda",
-                            Model = "Hyundai i30",
+                            Make = "Volkswagen Group",
+                            Model = "Ford Ranger",
                             TypeId = 1,
                             Wheels = 4
                         },
@@ -169,8 +169,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 2,
                             Doors = 4,
-                            Make = "Hyundai / Kia",
-                            Model = "Toyota Hilux",
+                            Make = "Volkswagen Group",
+                            Model = "Hyundai i30",
                             TypeId = 1,
                             Wheels = 4
                         },
@@ -178,8 +178,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 3,
                             Doors = 4,
-                            Make = "FCA",
-                            Model = "Toyota Corolla",
+                            Make = "Toyota",
+                            Model = "Ford Ranger",
                             TypeId = 1,
                             Wheels = 4
                         },
@@ -187,8 +187,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 4,
                             Doors = 4,
-                            Make = "Hyundai / Kia",
-                            Model = "Toyota Hilux",
+                            Make = "Renault",
+                            Model = "Hyundai Tucson",
                             TypeId = 1,
                             Wheels = 4
                         },
@@ -196,52 +196,7 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 5,
                             Doors = 4,
-                            Make = "Honda",
-                            Model = "Toyota Hilux",
-                            TypeId = 1,
-                            Wheels = 4
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Doors = 4,
-                            Make = "Toyota",
-                            Model = "Toyota Hilux",
-                            TypeId = 1,
-                            Wheels = 4
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Doors = 4,
-                            Make = "Ford",
-                            Model = "Hyundai i30",
-                            TypeId = 1,
-                            Wheels = 4
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Doors = 4,
-                            Make = "Renault",
-                            Model = "Toyota Corolla",
-                            TypeId = 1,
-                            Wheels = 4
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Doors = 4,
-                            Make = "Toyota",
-                            Model = "Toyota Corolla",
-                            TypeId = 1,
-                            Wheels = 4
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Doors = 4,
-                            Make = "Volkswagen Group",
+                            Make = "Hyundai / Kia",
                             Model = "Hyundai Tucson",
                             TypeId = 1,
                             Wheels = 4
