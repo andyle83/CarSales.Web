@@ -5,6 +5,16 @@ Allowing users to manage a list of vehicle / vehicles type in an in-memory datab
 
 ## Changes list
 
+N/A
+
+## TODO
+
+Here are some pending features need to implement:
+
+- Adding unit test for both front-end and back-end
+- Handle edit or update in the vehicle list table
+- Manage customizable features in a specified type of a vehicle
+
 ## Frameworks and Libraries
 
 ### Server
