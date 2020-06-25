@@ -59,18 +59,18 @@ namespace CarSales.Web.Infra.Data.Repositories
             };
         }
 
-        public IEnumerable<Vehicle> GetVehicles(int vehicleTypeId)
+        public async Task<IEnumerable<Vehicle>> GetVehicles(int vehicleTypeId)
         {
-            var type = _context.VehicleTypes
+            var type = await _context.VehicleTypes
                         .Where(t => t.Id == vehicleTypeId)
-                        .FirstOrDefault();
+                        .FirstOrDefaultAsync();
 
             if (type == null) return null;
 
-            var vehicles = _context.Entry(type)
+            var vehicles = await _context.Entry(type)
                             .Collection(t => t.Vehicles)
                             .Query()
-                            .ToList();
+                            .ToListAsync();
 
             return vehicles;
         }

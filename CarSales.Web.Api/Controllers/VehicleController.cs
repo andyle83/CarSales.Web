@@ -37,7 +37,7 @@ namespace CarSales.Web.Api.Controllers
 
             var vehicle = await _vehicleService.GetVehicleAsync(id);
 
-            if (vehicle == null)
+            if (vehicle?.Resource == null)
             {
                 return NotFound(new ErrorResponse("Vehicle is not found."));
             }

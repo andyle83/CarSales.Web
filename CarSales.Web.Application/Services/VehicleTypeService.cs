@@ -28,24 +28,24 @@ namespace CarSales.Web.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<VehicleTypeDto>> GetVehicleTypesAsync()
+        public async Task<VehicleTypeListResponse> GetVehicleTypesAsync()
         {
             _logger.LogInformation($"Calling {nameof(GetVehicleTypesAsync)} of {nameof(VehicleTypeService)}");
 
             var vehicleTypes = await _vehicleTypeRepository.GetVehicleTypesAsync();
             var result = _mapper.Map<IEnumerable<VehicleTypeDto>>(vehicleTypes);
 
-            return result;
+            return new VehicleTypeListResponse(result);
         }
 
-        public async Task<VehicleTypeDetailsDto> GetVehicleTypeAsync(int vehicleTypeId)
+        public async Task<VehicleTypeResponse> GetVehicleTypeAsync(int vehicleTypeId)
         {
             _logger.LogInformation($"Calling {nameof(GetVehicleTypeAsync)} of {nameof(VehicleTypeService)} with id {vehicleTypeId}");
 
             var vehicleType = await _vehicleTypeRepository.GetVehicleTypeAsync(vehicleTypeId);
             var result = _mapper.Map<VehicleType, VehicleTypeDetailsDto>(vehicleType);
 
-            return result;
+            return new VehicleTypeResponse(result);
         }
 
         public async Task<QueryResultDto<VehicleDto>> GetVehiclesAsync(VehiclesQueryDto query)
@@ -60,14 +60,14 @@ namespace CarSales.Web.Application.Services
             return result;
         }
 
-        public IEnumerable<VehicleDto> GetVehicles(int vehicleTypeId)
+        public async Task<VehicleListResponse> GetVehicles(int vehicleTypeId)
         {
             _logger.LogInformation($"Calling {nameof(GetVehicles)} of {nameof(VehicleTypeService)} with id {vehicleTypeId}");
 
-            var vehicles = _vehicleTypeRepository.GetVehicles(vehicleTypeId);
+            var vehicles = await _vehicleTypeRepository.GetVehicles(vehicleTypeId);
             var result = _mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleDto>>(vehicles);
 
-            return result;
+            return new VehicleListResponse(result);
         }
 
         public async Task<VehicleTypeResponse> AddVehicleTypeAsync(SaveVehicleTypeDto saveVehicleTypeDto)
