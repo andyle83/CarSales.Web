@@ -6,7 +6,7 @@ namespace CarSales.Web.Appplication.Interfaces
 {
     public interface IVehicleService
     {
-        public Task<VehicleDto> GetVehicleAsync(int vehicleId);
+        public Task<VehicleResponse> GetVehicleAsync(int vehicleId);
 
         public Task<VehicleResponse> AddVehicleAsync(SaveVehicleDto vehicleTypeDto);
 

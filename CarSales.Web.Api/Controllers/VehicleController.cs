@@ -42,7 +42,7 @@ namespace CarSales.Web.Api.Controllers
                 return NotFound(new ErrorResponse("Vehicle is not found."));
             }
 
-            return Ok(new VehicleResponse(vehicle));
+            return Ok(vehicle);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace CarSales.Web.Api.Controllers
                 return BadRequest(new ErrorResponse(result.Message));
             }
 
-            return Ok(result.Resource);
+            return Ok(result);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace CarSales.Web.Api.Controllers
                 return BadRequest(new ErrorResponse(result.Message));
             }
 
-            return Ok(result.Resource);
+            return Ok(result);
         }
     }
 }
