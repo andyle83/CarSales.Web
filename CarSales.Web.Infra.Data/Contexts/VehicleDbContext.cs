@@ -65,7 +65,7 @@ namespace CarSales.Web.Infra.Data.Context
             #region VehicleSeed
 
             var rng = new Random();
-            IEnumerable<Vehicle> vehicles = Enumerable.Range(1, 5).Select(index => new Vehicle
+            IEnumerable<Vehicle> vehicles = Enumerable.Range(1, 2).Select(index => new Vehicle
             {
                 Id = index,
                 Doors = 4,

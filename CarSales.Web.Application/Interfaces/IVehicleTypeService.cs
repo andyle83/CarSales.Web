@@ -7,14 +7,14 @@ namespace CarSales.Web.Application.Interfaces
 {
     public interface IVehicleTypeService
     {
-        public Task<IEnumerable<VehicleTypeDto>> GetVehicleTypesAsync();
+        public Task<VehicleTypeListResponse> GetVehicleTypesAsync();
 
         public Task<VehicleTypeResponse> AddVehicleTypeAsync(SaveVehicleTypeDto vehicleTypeDto);
 
-        public Task<VehicleTypeDetailsDto> GetVehicleTypeAsync(int vehicleTypeId);
+        public Task<VehicleTypeResponse> GetVehicleTypeAsync(int vehicleTypeId);
 
         public Task<QueryResultDto<VehicleDto>> GetVehiclesAsync(VehiclesQueryDto query);
 
-        public IEnumerable<VehicleDto> GetVehicles(int vehicleTypeId);
+        public Task<VehicleListResponse> GetVehicles(int vehicleTypeId);
     }
 }

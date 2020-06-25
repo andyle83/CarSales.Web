@@ -16,6 +16,6 @@ namespace CarSales.Web.Domain.Interfaces
 
         public Task<QueryResult<Vehicle>> GetVehiclesAsync(VehiclesQuery query);
 
-        public IEnumerable<Vehicle> GetVehicles(int vehicleTypeId);
+        public Task<IEnumerable<Vehicle>> GetVehicles(int vehicleTypeId);
     }
 }

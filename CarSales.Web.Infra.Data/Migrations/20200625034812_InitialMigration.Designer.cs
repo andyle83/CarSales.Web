@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarSales.Web.Infra.Data.Migrations
 {
     [DbContext(typeof(VehicleDbContext))]
-    [Migration("20200624113125_InitialMigration")]
+    [Migration("20200625034812_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -162,8 +162,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 1,
                             Doors = 4,
-                            Make = "Volkswagen Group",
-                            Model = "Ford Ranger",
+                            Make = "Renault",
+                            Model = "Toyota Hilux",
                             TypeId = 1,
                             Wheels = 4
                         },
@@ -171,35 +171,8 @@ namespace CarSales.Web.Infra.Data.Migrations
                         {
                             Id = 2,
                             Doors = 4,
-                            Make = "Volkswagen Group",
-                            Model = "Hyundai i30",
-                            TypeId = 1,
-                            Wheels = 4
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Doors = 4,
-                            Make = "Toyota",
+                            Make = "General Motors",
                             Model = "Ford Ranger",
-                            TypeId = 1,
-                            Wheels = 4
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Doors = 4,
-                            Make = "Renault",
-                            Model = "Hyundai Tucson",
-                            TypeId = 1,
-                            Wheels = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Doors = 4,
-                            Make = "Hyundai / Kia",
-                            Model = "Hyundai Tucson",
                             TypeId = 1,
                             Wheels = 4
                         });

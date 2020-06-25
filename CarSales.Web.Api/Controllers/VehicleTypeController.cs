@@ -4,7 +4,6 @@ using CarSales.Web.Application.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CarSales.Web.Api.Controllers
@@ -42,7 +41,7 @@ namespace CarSales.Web.Api.Controllers
                 return NotFound(new ErrorResponse("Not found any vehicle types."));
             }
 
-            return Ok(new VehicleTypeListResponse(vehicleTypes));
+            return Ok(vehicleTypes);
         }
 
         /// <summary>
@@ -59,12 +58,12 @@ namespace CarSales.Web.Api.Controllers
 
             var vehicleType = await _vehicleTypeService.GetVehicleTypeAsync(id);
 
-            if (vehicleType == null)
+            if (vehicleType?.Resource == null)
             {
                 return NotFound(new ErrorResponse("Vehicle Type is not found."));
             }
 
-            return Ok(new VehicleTypeResponse(vehicleType));
+            return Ok(vehicleType);
         }
 
         /// <summary>
@@ -98,18 +97,18 @@ namespace CarSales.Web.Api.Controllers
         [ProducesResponseType(typeof(VehicleListResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
         [Route("{id}/Vehicle/")]
-        public IActionResult GetVehiclesByType(int id)
+        public async Task<IActionResult> GetVehiclesByType(int id)
         {
             _logger.LogInformation($"Calling {nameof(GetVehiclesByType)} of {nameof(VehicleTypeController)} with id {id}");
 
-            var vehicles = _vehicleTypeService.GetVehicles(id);
+            var result = await _vehicleTypeService.GetVehicles(id);
 
-            if (vehicles == null)
+            if (result?.Resource == null)
             {
                 return NotFound(new ErrorResponse("Not found any vehicles."));
             }
 
-            return Ok(new VehicleListResponse(vehicles));
+            return Ok(result);
         }
 
         /// <summary>

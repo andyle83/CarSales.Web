@@ -27,14 +27,14 @@ namespace CarSales.Web.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<VehicleDto> GetVehicleAsync(int vehicleId)
+        public async Task<VehicleResponse> GetVehicleAsync(int vehicleId)
         {
             _logger.LogInformation($"Calling {nameof(GetVehicleAsync)} of {nameof(VehicleService)} with id {vehicleId}");
 
             var vehicle = await _vehicleRepository.GetVehicleAsync(vehicleId);
             var result = _mapper.Map<VehicleDto>(vehicle);
 
-            return result;
+            return new VehicleResponse(result);
         }
 
         public async Task<VehicleResponse> AddVehicleAsync(SaveVehicleDto saveVehicleDto)
