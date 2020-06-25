@@ -57,7 +57,7 @@ namespace CarSales.Web.Infra.Data.Migrations
                     b.Property<decimal>("Value")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("VehicleId")
+                    b.Property<long?>("VehicleId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -120,7 +120,7 @@ namespace CarSales.Web.Infra.Data.Migrations
 
             modelBuilder.Entity("CarSales.Web.Models.Vehicle", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -158,19 +158,19 @@ namespace CarSales.Web.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 1L,
                             Doors = 4,
-                            Make = "Renault",
+                            Make = "Nissan",
                             Model = "Toyota Hilux",
                             TypeId = 1,
                             Wheels = 4
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 2L,
                             Doors = 4,
-                            Make = "General Motors",
-                            Model = "Ford Ranger",
+                            Make = "Group PSA",
+                            Model = "Hyundai Tucson",
                             TypeId = 1,
                             Wheels = 4
                         });

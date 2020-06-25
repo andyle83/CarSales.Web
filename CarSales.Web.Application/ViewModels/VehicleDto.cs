@@ -4,7 +4,7 @@ namespace CarSales.Web.Application.ViewModels
 {
     public class VehicleDto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         [Range(0, 10)]

@@ -13,7 +13,7 @@ namespace CarSales.Web.Infra.Data.Repositories
         {
         }
 
-        public async Task<Vehicle> GetVehicleAsync(int vehicleId)
+        public async Task<Vehicle> GetVehicleAsync(long vehicleId)
         {
             var vehicle = await _context.Vehicles
                             .Where(vehicle => vehicle.Id == vehicleId)

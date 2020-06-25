@@ -1,8 +1,5 @@
 ﻿using CarSales.Web.Application.ViewModels;
-using CarSales.Web.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarSales.Web.Application.Communication
 {

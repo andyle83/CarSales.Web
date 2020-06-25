@@ -5,7 +5,7 @@ namespace CarSales.Web.Domain.Interfaces
 {
     public interface IVehicleRepository
     {
-        public Task<Vehicle> GetVehicleAsync(int vehicleId);
+        public Task<Vehicle> GetVehicleAsync(long vehicleId);
 
         public Task AddVehicleAsync(Vehicle vehicle);
 
