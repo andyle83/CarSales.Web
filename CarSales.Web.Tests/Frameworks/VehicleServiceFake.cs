@@ -82,22 +82,36 @@ namespace CarSales.Web.Tests.Frameworks
         {
             VehicleResponse result = _vehicleSample.FirstOrDefault(vehicle => vehicle.Resource.Id == vehicleId);
 
-            _vehicleSample.Remove(result);
+            if (result != null)
+            {
+                _vehicleSample.Remove(result);
 
-            return Task.FromResult(result);
+                return Task.FromResult(result);
+            }
+            else
+            {
+                return Task.FromResult(new VehicleResponse("Invalid vehicle data"));
+            }
         }
 
         public Task<VehicleResponse> UpdateVehicleAsync(long vehicleId, SaveVehicleDto vehicleDto)
         {
             VehicleResponse result = _vehicleSample.FirstOrDefault(vehicle => vehicle.Resource.Id == vehicleId);
 
-            result.Resource.Doors = vehicleDto.Doors;
-            result.Resource.Wheels = vehicleDto.Wheels;
-            result.Resource.Make = vehicleDto.Make;
-            result.Resource.Model = vehicleDto.Model;
-            result.Resource.Description = vehicleDto.Description;
+            if (result != null)
+            {
+                result.Resource.Doors = vehicleDto.Doors;
+                result.Resource.Wheels = vehicleDto.Wheels;
+                result.Resource.Make = vehicleDto.Make;
+                result.Resource.Model = vehicleDto.Model;
+                result.Resource.Description = vehicleDto.Description;
 
-            return Task.FromResult(result);
+                return Task.FromResult(result);
+            }
+            else
+            {
+                return Task.FromResult(new VehicleResponse("Invalid vehicle data"));
+            }
         }
     }
 }

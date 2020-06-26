@@ -29,7 +29,7 @@ namespace CarSales.Web.Tests.Controllers
         public void GetVehicleAsync_When_Get_Called_ReturnOkResult()
         {
             // Arrange
-            int vehicleId = 1;
+            long vehicleId = 1;
 
             // Act
             var okResult = _vehicleController.GetVehicleAsync(vehicleId).GetAwaiter().GetResult();
@@ -42,7 +42,7 @@ namespace CarSales.Web.Tests.Controllers
         public void GetVehicleAsync_When_Get_Caled_ReturnNotFoundResult()
         {
             // Arrange
-            int vehicleId = 100;
+            long vehicleId = 100;
 
             // Act
             var notFoundResult = _vehicleController.GetVehicleAsync(vehicleId).GetAwaiter().GetResult();
@@ -87,10 +87,36 @@ namespace CarSales.Web.Tests.Controllers
             };
 
             // Act
-            var okResult = _vehicleController.AddVehicleAsync(saveVehicle).GetAwaiter().GetResult();
+            var badRequestResult = _vehicleController.AddVehicleAsync(saveVehicle).GetAwaiter().GetResult();
 
             // Assert
-            Assert.IsType<BadRequestObjectResult>(okResult);
+            Assert.IsType<BadRequestObjectResult>(badRequestResult);
+        }
+
+        [Fact]
+        public void RemoveVehicleAsync_When_Get_Called_ReturnOkResult()
+        {
+            // Arrange
+            long vehicleId = 1;
+
+            // Act
+            var okResult = _vehicleController.RemoveVehicleAsync(vehicleId).GetAwaiter().GetResult();
+
+            // Assert
+            Assert.IsType<OkObjectResult>(okResult);
+        }
+
+        [Fact]
+        public void RemoveVehicleAsync_When_Get_Called_ReturnBadRequest()
+        {
+            // Arrange
+            long vehicleId = 1000;
+
+            // Act
+            var badRequestResult = _vehicleController.RemoveVehicleAsync(vehicleId).GetAwaiter().GetResult();
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(badRequestResult);
         }
     }
 }
