@@ -5,7 +5,7 @@ namespace CarSales.Web.Models
 {
     public class Vehicle
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public int Doors { get; set; }
 

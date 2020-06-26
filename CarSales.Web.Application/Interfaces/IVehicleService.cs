@@ -6,12 +6,12 @@ namespace CarSales.Web.Appplication.Interfaces
 {
     public interface IVehicleService
     {
-        public Task<VehicleResponse> GetVehicleAsync(int vehicleId);
+        public Task<VehicleResponse> GetVehicleAsync(long vehicleId);
 
-        public Task<VehicleResponse> AddVehicleAsync(SaveVehicleDto vehicleTypeDto);
+        public Task<VehicleResponse> AddVehicleAsync(SaveVehicleDto saveVehicleDto);
 
-        public Task<VehicleResponse> RemoveVehicleAsync(int vehicleId);
+        public Task<VehicleResponse> RemoveVehicleAsync(long vehicleId);
 
-        public Task<VehicleResponse> UpdateVehicleAsync(int vehicleId, SaveVehicleDto vehicleDto);
+        public Task<VehicleResponse> UpdateVehicleAsync(long vehicleId, SaveVehicleDto saveVehicleDto);
     }
 }

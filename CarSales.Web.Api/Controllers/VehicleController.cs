@@ -31,7 +31,7 @@ namespace CarSales.Web.Api.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(VehicleResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetVehicleAsync(int id)
+        public async Task<IActionResult> GetVehicleAsync(long id)
         {
             _logger.LogInformation($"Calling {nameof(GetVehicleAsync)} of {nameof(VehicleController)} with id {id}");
 
@@ -75,7 +75,7 @@ namespace CarSales.Web.Api.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(VehicleResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> RemoveVehicleAsync(int id)
+        public async Task<IActionResult> RemoveVehicleAsync(long id)
         {
             _logger.LogInformation($"Calling {nameof(RemoveVehicleAsync)} of {nameof(VehicleController)} with id {id}");
 

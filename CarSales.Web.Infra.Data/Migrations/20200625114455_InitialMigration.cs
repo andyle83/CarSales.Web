@@ -41,7 +41,7 @@ namespace CarSales.Web.Infra.Data.Migrations
                 name: "Vehicles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Doors = table.Column<int>(nullable: false),
                     Wheels = table.Column<int>(nullable: false),
@@ -78,7 +78,7 @@ namespace CarSales.Web.Infra.Data.Migrations
                     Name = table.Column<string>(nullable: true),
                     Value = table.Column<decimal>(nullable: false),
                     Units = table.Column<int>(nullable: false),
-                    VehicleId = table.Column<int>(nullable: true)
+                    VehicleId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -119,12 +119,12 @@ namespace CarSales.Web.Infra.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 1, null, 4, "Renault", "Toyota Hilux", null, 1, 4 });
+                values: new object[] { 1L, null, 4, "Nissan", "Toyota Hilux", null, 1, 4 });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
                 columns: new[] { "Id", "Description", "Doors", "Make", "Model", "RegistrationId", "TypeId", "Wheels" },
-                values: new object[] { 2, null, 4, "General Motors", "Ford Ranger", null, 1, 4 });
+                values: new object[] { 2L, null, 4, "Group PSA", "Hyundai Tucson", null, 1, 4 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_VehicleAttribute_VehicleId",

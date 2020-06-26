@@ -27,7 +27,7 @@ namespace CarSales.Web.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<VehicleResponse> GetVehicleAsync(int vehicleId)
+        public async Task<VehicleResponse> GetVehicleAsync(long vehicleId)
         {
             _logger.LogInformation($"Calling {nameof(GetVehicleAsync)} of {nameof(VehicleService)} with id {vehicleId}");
 
@@ -67,7 +67,7 @@ namespace CarSales.Web.Application.Services
             }
         }
 
-        public async Task<VehicleResponse> RemoveVehicleAsync(int vehicleId)
+        public async Task<VehicleResponse> RemoveVehicleAsync(long vehicleId)
         {
             _logger.LogInformation($"Calling {nameof(RemoveVehicleAsync)} of {nameof(VehicleService)} with id {vehicleId}");
 
@@ -92,7 +92,7 @@ namespace CarSales.Web.Application.Services
             }
         }
 
-        public async Task<VehicleResponse> UpdateVehicleAsync(int vehicleId, SaveVehicleDto saveVehicleDto)
+        public async Task<VehicleResponse> UpdateVehicleAsync(long vehicleId, SaveVehicleDto saveVehicleDto)
         {
             _logger.LogInformation($"Calling {nameof(UpdateVehicleAsync)} of {nameof(VehicleService)} with id {vehicleId}");
 
